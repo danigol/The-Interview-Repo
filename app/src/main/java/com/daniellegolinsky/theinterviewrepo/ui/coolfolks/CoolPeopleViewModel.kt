@@ -44,12 +44,16 @@ class CoolPeopleViewModel @Inject constructor(
     // Runs search on cached data, if available
     fun filterByFavoriteColor() {
         val searchColor = _coolPeopleViewState.value.searchTerm.lowercase()
-        viewModelScope.launch {
-            _coolPeopleViewState.value = CoolPeopleViewState(
-                coolPeople = coolPeopleRepo.getCoolPeople(false).filter { person ->
-                    person.favoriteColor.lowercase().contains(searchColor)
-                }, _coolPeopleViewState.value.searchTerm
-            )
+        if (searchColor.isNotEmpty()) {
+            viewModelScope.launch {
+                _coolPeopleViewState.value = CoolPeopleViewState(
+                    coolPeople = coolPeopleRepo.getCoolPeople(false).filter { person ->
+                        person.favoriteColor.lowercase().contains(searchColor)
+                    }, _coolPeopleViewState.value.searchTerm
+                )
+            }
+        } else {
+            fetchCoolPeople()
         }
     }
 }
