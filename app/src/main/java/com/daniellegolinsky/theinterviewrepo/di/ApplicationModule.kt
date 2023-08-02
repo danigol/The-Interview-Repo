@@ -37,7 +37,9 @@ object ApplicationModule {
     internal fun providesCoolTestApi(): CoolTestApi {
         val baseUrl = "https://gist.githubusercontent.com/"
 
-        val gson = GsonBuilder().setLenient().create()
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
         val loggingInterceptor = HttpLoggingInterceptor() // TODO Generally only for debugging...
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY // TODO (especially that)
         val httpClient = OkHttpClient.Builder()
