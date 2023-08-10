@@ -34,7 +34,20 @@ class CoolPeopleViewModel @Inject constructor(
     fun fetchCoolPeople() {
         viewModelScope.launch {
             _coolPeopleViewState.value = CoolPeopleViewState(
-                coolPeople = coolPeopleRepo.getCoolPeople(),
+                coolPeople = coolPeopleRepo.getCoolPeople().sortedBy {
+                    it.favoriteColor
+                },
+                searchTerm = _coolPeopleViewState.value.searchTerm
+            )
+        }
+    }
+
+    fun sortByFavoriteColor() {
+        viewModelScope.launch {
+            _coolPeopleViewState.value = CoolPeopleViewState(
+                coolPeople = coolPeopleRepo.getCoolPeople().sortedBy {
+                    it.favoriteColor
+                },
                 searchTerm = _coolPeopleViewState.value.searchTerm
             )
         }
@@ -45,6 +58,7 @@ class CoolPeopleViewModel @Inject constructor(
     fun filterByFavoriteColor() {
         val searchColor = _coolPeopleViewState.value.searchTerm.lowercase()
         if (searchColor.isNotEmpty()) {
+            // TODO Improve search
             viewModelScope.launch {
                 _coolPeopleViewState.value = CoolPeopleViewState(
                     coolPeople = coolPeopleRepo.getCoolPeople(false).filter { person ->
