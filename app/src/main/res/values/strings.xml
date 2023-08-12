@@ -3,4 +3,6 @@
 
     <string name="cool_header">Cool people\'s favorite colors:</string>
     <string name="search">Search</string>
+    <string name="like_button_text">Like</string>
+    <string name="liked_button_text">Liked</string>
 </resources>

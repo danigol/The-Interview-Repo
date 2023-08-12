@@ -10,8 +10,8 @@ data class CoolPersonResponse(
     @SerializedName("last_name")
     val lastName: String,
     @SerializedName("favorite_color")
-    val favoriteColor: String, /* Mine's red... or purple?
-        Sometimes green. Can I pick black? Sometimes they say you can't,
-        but it goes with everything and I AM a New Yorker. Black's our uniform!
-    */
+    val favoriteColor: String,
+
+    var isLiked: Boolean?,
+
 )

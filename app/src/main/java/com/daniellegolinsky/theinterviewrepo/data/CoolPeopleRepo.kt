@@ -14,7 +14,7 @@ class CoolPeopleRepo @Inject constructor(
 ){
 
     private val coolListMutex = Mutex()
-    private var cachedCoolList: List<CoolPersonResponse> = emptyList()
+    var cachedCoolList: List<CoolPersonResponse> = emptyList()
 
     suspend fun getCoolPeople(refreshList: Boolean = true): List<CoolPersonResponse> {
         if (refreshList || cachedCoolList.isEmpty()) {

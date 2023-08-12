@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.daniellegolinsky.theinterviewrepo.R
 import com.daniellegolinsky.theinterviewrepo.ui.components.CoolDivider
 import com.daniellegolinsky.theinterviewrepo.ui.components.CoolSearchBar
@@ -23,7 +25,7 @@ import com.daniellegolinsky.theinterviewrepo.ui.components.PersonItem
 @Composable
 fun CoolPeopleScreen(
     viewModel: CoolPeopleViewModel,
-    modifier: Modifier
+    modifier: Modifier = Modifier,
 ) {
     val viewState = viewModel.coolPeopleViewState.collectAsState().value
 
@@ -44,9 +46,15 @@ fun CoolPeopleScreen(
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn {
             items(viewState.coolPeople) {
-                PersonItem(it)
+                PersonItem(it, viewModel)
                 CoolDivider()
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewCoolPeopleScreen() {
+    CoolPeopleScreen(viewModel = viewModel())
 }

@@ -3,6 +3,7 @@ package com.daniellegolinsky.theinterviewrepo.ui.coolfolks
 import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.daniellegolinsky.theinterviewrepo.api.models.CoolPersonResponse
 import com.daniellegolinsky.theinterviewrepo.data.CoolPeopleRepo
 import com.daniellegolinsky.theinterviewrepo.viewstates.CoolPeopleViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -68,6 +69,28 @@ class CoolPeopleViewModel @Inject constructor(
             }
         } else {
             fetchCoolPeople()
+        }
+    }
+
+    suspend fun filterById(id: String): CoolPersonResponse? {
+        return if (id.isNotEmpty()) {
+            coolPeopleRepo.getCoolPeople(false).filter { person ->
+                person.favoriteColor.lowercase().contains(id)
+            }.firstOrNull()
+        } else {
+            null
+        }
+    }
+
+
+    fun likePerson(id: String) {
+        viewModelScope.launch {
+            coolPeopleRepo.cachedCoolList.firstOrNull { it.id == id }?.isLiked = true
+            val coolPeopleList = coolPeopleRepo.cachedCoolList
+            _coolPeopleViewState.value = CoolPeopleViewState(
+                coolPeopleList,
+                _coolPeopleViewState.value.searchTerm
+            )
         }
     }
 }
