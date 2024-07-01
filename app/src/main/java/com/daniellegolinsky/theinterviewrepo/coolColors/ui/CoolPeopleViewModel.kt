@@ -1,15 +1,13 @@
-package com.daniellegolinsky.theinterviewrepo.ui.coolfolks
+package com.daniellegolinsky.theinterviewrepo.coolColors.ui
 
-import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.daniellegolinsky.theinterviewrepo.data.CoolPeopleRepo
-import com.daniellegolinsky.theinterviewrepo.viewstates.CoolPeopleViewState
+import com.daniellegolinsky.theinterviewrepo.coolColors.data.CoolPeopleRepo
+import com.daniellegolinsky.theinterviewrepo.coolColors.viewstates.CoolPeopleViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel

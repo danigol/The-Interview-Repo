@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.ui.components
+package com.daniellegolinsky.theinterviewrepo.coolColors.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

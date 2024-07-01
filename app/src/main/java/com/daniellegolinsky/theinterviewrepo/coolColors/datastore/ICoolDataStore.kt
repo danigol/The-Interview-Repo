@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.datastore
+package com.daniellegolinsky.theinterviewrepo.coolColors.datastore
 
 interface ICoolDataStore {
     suspend fun getLastSearchTerm(): String

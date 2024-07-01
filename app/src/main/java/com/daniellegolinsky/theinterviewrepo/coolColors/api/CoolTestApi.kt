@@ -1,6 +1,6 @@
-package com.daniellegolinsky.theinterviewrepo.api
+package com.daniellegolinsky.theinterviewrepo.coolColors.api
 
-import com.daniellegolinsky.theinterviewrepo.api.models.CoolPersonResponse
+import com.daniellegolinsky.theinterviewrepo.coolColors.models.CoolPersonResponse
 import retrofit2.http.GET
 
 interface CoolTestApi {

@@ -7,8 +7,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import com.daniellegolinsky.theinterviewrepo.api.CoolTestApi
-import com.daniellegolinsky.theinterviewrepo.datastore.CoolDataStore
+import com.daniellegolinsky.theinterviewrepo.coolColors.api.CoolTestApi
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

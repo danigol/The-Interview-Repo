@@ -3,4 +3,7 @@
 
     <string name="cool_header">Cool people\'s favorite colors:</string>
     <string name="search">Search</string>
+
+    <!-- Happy Chips -->
+    <string name="another_tab">Another tab</string>
 </resources>

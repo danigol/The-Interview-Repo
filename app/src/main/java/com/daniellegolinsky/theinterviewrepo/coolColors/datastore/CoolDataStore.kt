@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.datastore
+package com.daniellegolinsky.theinterviewrepo.coolColors.datastore
 
 import android.util.Log
 import androidx.datastore.core.DataStore
