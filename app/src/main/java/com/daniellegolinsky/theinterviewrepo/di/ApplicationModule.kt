@@ -7,8 +7,9 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import com.daniellegolinsky.theinterviewrepo.api.CoolTestApi
-import com.daniellegolinsky.theinterviewrepo.datastore.CoolDataStore
+import com.daniellegolinsky.theinterviewrepo.coolColors.api.CoolTestApi
+import com.daniellegolinsky.theinterviewrepo.happyChips.data.repos.ChipRepo
+import com.daniellegolinsky.theinterviewrepo.happyChips.ui.happyChips.HappyChipsViewModel
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -81,5 +82,11 @@ object ApplicationModule {
             scope = CoroutineScope(dispatcher + SupervisorJob()),
             produceFile = { appContext.preferencesDataStoreFile(dataStoreSettingsName) }
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideHappyChipsViewModel(chipRepo: ChipRepo): HappyChipsViewModel {
+        return HappyChipsViewModel(chipRepo)
     }
 }

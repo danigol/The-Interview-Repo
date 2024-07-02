@@ -1,8 +1,8 @@
-package com.daniellegolinsky.theinterviewrepo.data
+package com.daniellegolinsky.theinterviewrepo.coolColors.data
 
 import android.util.Log
-import com.daniellegolinsky.theinterviewrepo.api.CoolTestApi
-import com.daniellegolinsky.theinterviewrepo.api.models.CoolPersonResponse
+import com.daniellegolinsky.theinterviewrepo.coolColors.api.CoolTestApi
+import com.daniellegolinsky.theinterviewrepo.coolColors.models.CoolPersonResponse
 import com.daniellegolinsky.theinterviewrepo.di.ApplicationModule
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

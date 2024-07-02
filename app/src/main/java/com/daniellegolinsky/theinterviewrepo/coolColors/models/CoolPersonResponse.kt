@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.api.models
+package com.daniellegolinsky.theinterviewrepo.coolColors.models
 
 import com.google.gson.annotations.SerializedName
 

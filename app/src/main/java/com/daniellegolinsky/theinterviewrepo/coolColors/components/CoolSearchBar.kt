@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.ui.components
+package com.daniellegolinsky.theinterviewrepo.coolColors.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.TextField

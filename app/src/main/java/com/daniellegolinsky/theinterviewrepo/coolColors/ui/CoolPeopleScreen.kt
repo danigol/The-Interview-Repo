@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.ui.coolfolks
+package com.daniellegolinsky.theinterviewrepo.coolColors.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,9 +16,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.daniellegolinsky.theinterviewrepo.R
-import com.daniellegolinsky.theinterviewrepo.ui.components.CoolDivider
-import com.daniellegolinsky.theinterviewrepo.ui.components.CoolSearchBar
-import com.daniellegolinsky.theinterviewrepo.ui.components.PersonItem
+import com.daniellegolinsky.theinterviewrepo.coolColors.components.CoolDivider
+import com.daniellegolinsky.theinterviewrepo.coolColors.components.CoolSearchBar
+import com.daniellegolinsky.theinterviewrepo.coolColors.components.PersonItem
 
 @Composable
 fun CoolPeopleScreen(

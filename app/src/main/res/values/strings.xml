@@ -3,4 +3,13 @@
 
     <string name="cool_header">Cool people\'s favorite colors:</string>
     <string name="search">Search</string>
+
+    <!-- Happy Chips -->
+    <string name="tag_prompt">What made you happy today?</string>
+    <string name="another_tab">Another tab</string>
+    <string name="other_chip">Other...</string>
+    <string name="add_other">Add \"other\" option</string>
+    <string name="add_add_button">Add</string>
+    <string name="add_cancel_button">Cancel</string>
+    <string name="saved_tags">Your preferences have (not really) been saved!</string> <!--TODO maybe actually save them someday? -->
 </resources>
