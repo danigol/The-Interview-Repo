@@ -1,4 +1,4 @@
-package com.daniellegolinsky.theinterviewrepo.happyChips.ui.components.happyChips
+package com.daniellegolinsky.theinterviewrepo.happyChips.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

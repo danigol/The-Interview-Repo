@@ -17,17 +17,23 @@ class HappyChipsViewModel @Inject constructor(chipRepo: ChipRepo) : ViewModel() 
     val chipViewStateFlow: StateFlow<HappyChipScreenViewState> = _chipViewStateFlow
 
     fun selectChip(selectedChip: String) {
-        val currentValue = _chipViewStateFlow.value.chips[selectedChip] ?: false
-        val newChipList = _chipViewStateFlow.value.chips.toMutableMap()
-        newChipList[selectedChip] = !currentValue
-        _chipViewStateFlow.value = generateNewStateForChipListUpdate(newChipList.toImmutableMap(), null)
+        if (_chipViewStateFlow.value.chips.containsKey(selectedChip)) {
+            val currentValue = _chipViewStateFlow.value.chips[selectedChip] ?: false
+            val newChipList = _chipViewStateFlow.value.chips.toMutableMap()
+            newChipList[selectedChip] = !currentValue
+            _chipViewStateFlow.value =
+                generateNewStateForChipListUpdate(newChipList.toImmutableMap(), null)
+        }
     }
 
     fun addChip(tag: String) {
-        // Update the flow and add the new tag as a selected chip
-        _chipViewStateFlow.value = generateNewStateForChipListUpdate(
-            _chipViewStateFlow.value.chips, tag
-        )
+        val newTag = tag.trim()
+        if (newTag.isNotEmpty()) {
+            // Update the flow and add the new tag as a selected chip
+            _chipViewStateFlow.value = generateNewStateForChipListUpdate(
+                _chipViewStateFlow.value.chips, newTag
+            )
+        }
     }
 
     private fun generateNewStateForChipListUpdate(

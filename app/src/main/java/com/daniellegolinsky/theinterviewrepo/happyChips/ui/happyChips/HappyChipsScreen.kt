@@ -6,12 +6,10 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -22,7 +20,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.daniellegolinsky.theinterviewrepo.R
 import com.daniellegolinsky.theinterviewrepo.happyChips.data.models.HappyChip
-import com.daniellegolinsky.theinterviewrepo.happyChips.ui.components.happyChips.HappyChipComponent
+import com.daniellegolinsky.theinterviewrepo.happyChips.ui.components.AddChipDialog
+import com.daniellegolinsky.theinterviewrepo.happyChips.ui.components.HappyChipComponent
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -31,10 +30,17 @@ fun HappyChipsScreen(
     modifier: Modifier = Modifier,
 ) {
     val viewState = viewModel.chipViewStateFlow.collectAsStateWithLifecycle().value
+    val addTagDialogVisible = remember { mutableStateOf(false) }
 
     Column(modifier = modifier) {
+        if (addTagDialogVisible.value) {
+            AddChipDialog(
+                onAdd = { newTag: String -> viewModel.addChip(newTag) },
+                onCancel = { addTagDialogVisible.value = false },
+            )
+        }
         Text(
-            text = "What made you happy today?",
+            text = stringResource(id = R.string.tag_prompt),
             fontSize = 28.sp, // TODO All of these replace with constants and custom composables
             textAlign = TextAlign.Center,
             modifier = Modifier
@@ -65,7 +71,7 @@ fun HappyChipsScreen(
                 chip = HappyChip(stringResource(id = R.string.other_chip), false),
                 onChipClick = {
                     // TODO Okay, maybe not, but it's a placeholder!
-                    viewModel.addChip("MORE CHIPS!")
+                    addTagDialogVisible.value = true
                 }
             )
         }
