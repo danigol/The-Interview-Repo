@@ -5,10 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
@@ -67,7 +68,10 @@ fun HappyChipsScreen(
         // See: https://developer.android.com/develop/ui/compose/layouts/flow
         FlowRow(
             horizontalArrangement = Arrangement.Absolute.Center,
-            modifier = Modifier.padding(horizontal = 20.dp),
+            modifier = Modifier
+                .padding(horizontal = 20.dp)
+                .verticalScroll(rememberScrollState())
+                .weight(1f, fill = true),
         ) {
             viewState.chips.forEach { chip ->
                 HappyChipComponent(
@@ -85,7 +89,6 @@ fun HappyChipsScreen(
                 }
             )
         }
-        Spacer(modifier = Modifier.weight(1f))
         Button(
             colors = ButtonColors(
                 containerColor = colorResource(id = R.color.button_green),
