@@ -13,6 +13,7 @@ import com.daniellegolinsky.theinterviewrepo.coolColors.ui.CoolPeopleViewModel
 import com.daniellegolinsky.theinterviewrepo.happyChips.data.models.HappyChip
 import com.daniellegolinsky.theinterviewrepo.happyChips.ui.anotherTab.ui.AnotherTabScreen
 import com.daniellegolinsky.theinterviewrepo.happyChips.ui.happyChips.HappyChipsScreen
+import com.daniellegolinsky.theinterviewrepo.happyChips.ui.happyChips.HappyChipsViewModel
 import com.daniellegolinsky.theinterviewrepo.navigation.MainNavHost.COOL_PEOPLE_COOL_COLORS
 import com.daniellegolinsky.theinterviewrepo.navigation.MainNavHost.HEART
 import com.daniellegolinsky.theinterviewrepo.navigation.MainNavHost.HOME
@@ -26,15 +27,17 @@ fun MainNavHost(destination: String) {
         composable(HOME) {
             // TODO Viewmodel, list, etc
 //            HappyChipsScreen(chipList = listOf())
-            HappyChipsScreen(
-                chipList = listOf(
-                    HappyChip("Chips", false),
+            /*
+            HappyChip("Chips", false),
                     HappyChip("Snacks", true),
                     HappyChip("Burritos", false),
                     HappyChip("A big snack", true),
                     HappyChip("Friends", true),
                     HappyChip("Coding!", false),
-                ),
+             */
+            val chipsViewModel = hiltViewModel<HappyChipsViewModel>()
+            HappyChipsScreen(
+                viewModel = chipsViewModel,
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 32.dp,)
             )
         }
