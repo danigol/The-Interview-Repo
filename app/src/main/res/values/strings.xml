@@ -6,4 +6,5 @@
 
     <!-- Happy Chips -->
     <string name="another_tab">Another tab</string>
+    <string name="other_chip">Other...</string>
 </resources>
