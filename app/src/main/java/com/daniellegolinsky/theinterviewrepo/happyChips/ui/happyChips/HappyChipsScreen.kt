@@ -1,16 +1,24 @@
 package com.daniellegolinsky.theinterviewrepo.happyChips.ui.happyChips
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,17 +39,18 @@ fun HappyChipsScreen(
 ) {
     val viewState = viewModel.chipViewStateFlow.collectAsStateWithLifecycle().value
     val addTagDialogVisible = remember { mutableStateOf(false) }
+    val localContext = LocalContext.current
 
     Column(modifier = modifier) {
         if (addTagDialogVisible.value) {
             AddChipDialog(
                 onAdd = { newTag: String -> viewModel.addChip(newTag) },
-                onCancel = { addTagDialogVisible.value = false },
+                onDismiss = { addTagDialogVisible.value = false },
             )
         }
         Text(
             text = stringResource(id = R.string.tag_prompt),
-            fontSize = 28.sp, // TODO All of these replace with constants and custom composables
+            fontSize = 24.sp, // TODO All of these replace with constants and custom composables
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
@@ -57,7 +66,8 @@ fun HappyChipsScreen(
         // a FlowRow allows us to add static chips, like the "Other" option.
         // See: https://developer.android.com/develop/ui/compose/layouts/flow
         FlowRow(
-            horizontalArrangement = Arrangement.Absolute.Center
+            horizontalArrangement = Arrangement.Absolute.Center,
+            modifier = Modifier.padding(horizontal = 20.dp),
         ) {
             viewState.chips.forEach { chip ->
                 HappyChipComponent(
@@ -73,6 +83,27 @@ fun HappyChipsScreen(
                     // TODO Okay, maybe not, but it's a placeholder!
                     addTagDialogVisible.value = true
                 }
+            )
+        }
+        Spacer(modifier = Modifier.weight(1f))
+        Button(
+            colors = ButtonColors(
+                containerColor = colorResource(id = R.color.button_green),
+                contentColor = Color.White,
+                disabledContainerColor = colorResource(id = R.color.light_gray),
+                disabledContentColor = colorResource(id = R.color.button_green),
+            ),
+            shape = RoundedCornerShape(size = 4.dp),
+            onClick = {
+                Toast.makeText(localContext, R.string.saved_tags, Toast.LENGTH_SHORT).show()
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "Save",
+                modifier = Modifier.padding(16.dp)
             )
         }
     }

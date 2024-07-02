@@ -24,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.daniellegolinsky.theinterviewrepo.navigation.MainNavHost
 import com.daniellegolinsky.theinterviewrepo.navigation.MainNavHost.HEART
@@ -36,7 +37,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(colorResource(id = R.color.background_gray)),
         content = { contentPadding ->
             Row(
                 modifier = Modifier
@@ -56,7 +57,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
             // TODO NavBarComponent? Would Require VM for data instead of remembered destination
             NavigationBar(
                 modifier = modifier,
-                containerColor = Color.Magenta,
+                containerColor = colorResource(id = R.color.light_gray),
                 contentColor = Color.White,
             ) {
                 NavigationBarItem(

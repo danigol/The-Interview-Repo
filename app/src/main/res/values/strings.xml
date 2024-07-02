@@ -11,4 +11,5 @@
     <string name="add_other">Add \"other\" option</string>
     <string name="add_add_button">Add</string>
     <string name="add_cancel_button">Cancel</string>
+    <string name="saved_tags">Your preferences have (not really) been saved!</string> <!--TODO maybe actually save them someday? -->
 </resources>

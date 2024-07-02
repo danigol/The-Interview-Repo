@@ -38,7 +38,7 @@ fun MainNavHost(destination: String) {
             val chipsViewModel = hiltViewModel<HappyChipsViewModel>()
             HappyChipsScreen(
                 viewModel = chipsViewModel,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 32.dp,)
+                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 32.dp,)
             )
         }
         composable(HEART) {
